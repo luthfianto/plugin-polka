@@ -1,7 +1,7 @@
 "use strict";
 
-const express = require("express");
-const bodyParser = require("body-parser");
+const polka = require("polka");
+// const bodyParser = require("body-parser");
 const router = require("./lib/router");
 const getfn = require("./lib/getfn");
 
@@ -10,10 +10,10 @@ module.exports = function (merapi) {
     return {
         apps: [],
 
-        typeExpress(name, opt) {
+        typePolka(name, opt) {
             this.apps.push(name);
             return function* (config, injector, logger) {
-                let app = express();
+                let app = polka();
 
                 let getFn = getfn(injector);
 
@@ -31,8 +31,8 @@ module.exports = function (merapi) {
                     bodyParserOptions.verify = yield getFn(bodyParserOptions.verify);
                 }
 
-                app.use(bodyParser.json(bodyParserOptions));
-                app.use(bodyParser.urlencoded({ extended: true }));
+                // app.use(bodyParser.json(bodyParserOptions));
+                // app.use(bodyParser.urlencoded({ extended: true }));
 
                 let isRoutesInMiddleware = false;
 
@@ -49,6 +49,9 @@ module.exports = function (merapi) {
 
                 app.start = function () {
                     app.listen(port, host);
+                    console.log(app.address)
+                    console.log(app)
+                    console.log(app.server)
                     logger.info(`Starting express on ${host}:${port}`);
                 };
                 return app;

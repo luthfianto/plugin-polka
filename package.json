@@ -1,34 +1,22 @@
 {
-  "name": "merapi-plugin-express",
-  "version": "0.4.0",
-  "description": "Merapi Plugin for Express App",
+  "name": "merapi-plugin-polka",
+  "version": "0.0.1",
+  "description": "Merapi Plugin for Polka App",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kata-ai/merapi-plugin-express.git"
-  },
   "keywords": [
-    "express",
+    "polka",
     "merapi"
   ],
-  "author": "Ahmad Rizqi Meydiarso",
-  "contributors": [
-    "Roni Kurniawan",
-    "Ikmal Syifai",
-    "Prakash Divy",
-    "Husnul Anwari"
-  ],
-  "license": "ISC",
-  "homepage": "https://github.com/kata-ai/merapi-plugin-express",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "merapi": "^0.17.1",
-    "type-check": "^0.3.2"
+    "body-parser": "*",
+    "merapi": "*",
+    "polka": "^*",
+    "server-address": "^2.0.0",
+    "type-check": "*"
   },
   "devDependencies": {
     "chai": "^3.5.0",
